@@ -15,7 +15,7 @@ class Conan2488(ConanFile):
 
     def source(self):
         self.run("git clone https://github.com/JavierJF/Conan2488.git")
-        self.run("cd Conan2488 && git checkout develop")
+        self.run("cd Conan2488")
 
     def build(self):
         cmake = CMake(self)
