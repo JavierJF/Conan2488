@@ -16,6 +16,11 @@ class Conan2488(ConanFile):
     def source(self):
         self.run("git clone https://github.com/JavierJF/Conan2488.git")
         self.run("cd Conan2488")
+        tools.replace_in_file("Conan2488/CMakeLists.txt",
+            "PROJECT(Conan2488)",
+            '''PROJECT(Conan2488)
+            include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+            conan_basic_setup()''')
 
     def build(self):
         cmake = CMake(self)
