@@ -1,0 +1,7 @@
+If (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    If (CMAKE_BUILD_TYPE STREQUAL "Debug")
+        Set(CMAKE_CXX_FLAGS "/std:c++latest /Od /Zi /W4 /EHsc /MDd -DGTEST_LANG_CXX11=1")
+    ElseIf (CMAKE_BUILD_TYPE STREQUAL "Release")
+        Set(CMAKE_CXX_FLAGS "/std:c++latest /Ox /W4 /EHsc -DGTEST_LANG_CXX11=1")
+    EndIf()
+EndIf()

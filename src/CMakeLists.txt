@@ -1,0 +1,20 @@
+INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/include)
+
+ADD_LIBRARY(${PROJECT_NAME}
+    ${PROJECT_SOURCE_DIR}/include/test.h
+    
+    ${PROJECT_SOURCE_DIR}/src/test.cpp
+)
+
+TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
+
+Install(TARGETS ${PROJECT_NAME}
+        ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib
+        CONFIGURATIONS Debug Release)
+
+Install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/
+        DESTINATION include
+        CONFIGURATIONS Debug Release
+        PATTERN "*.modulemap" EXCLUDE
+        PATTERN "*.txt" EXCLUDE)
